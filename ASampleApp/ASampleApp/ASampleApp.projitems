@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{9E309EFC-173C-44E9-B794-7E8B4902CD95}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ASampleApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ASampleApp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\FirstPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FirstViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Base\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\FileAccessHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Dog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DogRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListOfDogsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\DogViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListOfDogsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Base\BaseContentPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\DogPicturePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DogPicturePageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListOfDogsPicturesPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListOfDogsPicturesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\AuthPages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AuthViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Model\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModel\" />
+    <Folder Include="$(MSBuildThisFileDirectory)View\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModel\Base\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Data\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helper\" />
+    <Folder Include="$(MSBuildThisFileDirectory)View\Base\" />
+  </ItemGroup>
+</Project>
