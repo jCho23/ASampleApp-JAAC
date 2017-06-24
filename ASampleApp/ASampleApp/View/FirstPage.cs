@@ -28,6 +28,8 @@ namespace ASampleApp.View
             _dogNameEntry.SetBinding(Entry.TextProperty, "DogName");
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
 
+            _getListOfDogsPicturesButton.SetBinding(Button.CommandProperty, nameof(MyViewModel.));
+
             Content = new StackLayout
             {
                 Margin = 20,
