@@ -56,7 +56,7 @@ namespace ASampleApp.View
 
         private void _getListOfDogsPicturesButton_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new ListOfDogsPicturesPage()));
         }
 
         protected override void OnDisappearing()
