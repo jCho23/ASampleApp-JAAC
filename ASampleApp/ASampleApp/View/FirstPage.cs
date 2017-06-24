@@ -28,7 +28,7 @@ namespace ASampleApp.View
             _dogNameEntry.SetBinding(Entry.TextProperty, "DogName");
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
 
-            _getListOfDogsPicturesButton.SetBinding(Button.CommandProperty, nameof(MyViewModel.));
+            //_getListOfDogsPicturesButton.SetBinding(Button.CommandProperty, nameof(MyViewModel.));
 
             Content = new StackLayout
             {
@@ -51,6 +51,12 @@ namespace ASampleApp.View
             base.OnAppearing();
 
             _getListOfDogsButton.Clicked  += _getListOfDogsButton_Clicked;
+            _getListOfDogsPicturesButton.Clicked += _getListOfDogsPicturesButton_Clicked;
+        }
+
+        private void _getListOfDogsPicturesButton_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         protected override void OnDisappearing()
@@ -58,7 +64,9 @@ namespace ASampleApp.View
             base.OnDisappearing();
 
             _getListOfDogsButton.Clicked -= _getListOfDogsButton_Clicked;
+            _getListOfDogsPicturesButton.Clicked -= _getListOfDogsPicturesButton_Clicked;
         }
+
 
         void _getListOfDogsButton_Clicked(object sender, EventArgs e)
         {

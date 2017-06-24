@@ -8,10 +8,12 @@ namespace ASampleApp.ViewModel
 {
     public class FirstViewModel : BaseViewModel
     {
-        string _displayItem, _nameOfDog, _furColorOfDog;
+        string _displayItem, _nameOfDog, _furColorOfDog, _displayListOfDogPictures;
 
 
         public ICommand DisplayItemCommand { get; set; }
+
+        public ICommand DisplayListOfDogPictures { get; set; }
 
         public string DisplayItem
         {
@@ -19,6 +21,7 @@ namespace ASampleApp.ViewModel
             set { SetProperty(ref _displayItem, value); }
 
         }
+
 
         public string DogName
         {
@@ -34,6 +37,12 @@ namespace ASampleApp.ViewModel
 
         public FirstViewModel(){
             DisplayItemCommand = new Command(SubmitNewDogAction);
+            DisplayListOfDogPictures = new Command(GetListOfDogPictures);
+        }
+
+        private void GetListOfDogPictures(object obj)
+        {
+            throw new NotImplementedException();
         }
 
         void SubmitNewDogAction()
