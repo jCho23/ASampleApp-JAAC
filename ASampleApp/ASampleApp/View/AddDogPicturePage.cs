@@ -8,18 +8,21 @@ using ASampleApp.View.Base;
 
 namespace ASampleApp.View
 {
-    public class AddDogPicturePage : BaseContentPage<FirstViewModel>
+    public class AddDogPicturePage : BaseContentPage<AddDogPicturePageViewModel>
     {
         Entry _dogNameEntry = new Entry { Placeholder = "Enter Name of Dog" };
         Entry _dogFurColorEntry = new Entry { Placeholder = "Enter Dog Fur Color" };
-        Entry _dogPictureURL = new Entry { Text = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg" };
-        Button _submitNameandFurColorButton = new Button { Text = "Submit" };
+        //Entry _dogPictureURLEntry = new Entry { Text = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg" };
+        Entry _dogPictureURLEntry = new Entry { Placeholder = "Type URL of Dog Picture" };
+
+		Button _submitNameandFurColorButton = new Button { Text = "Submit" };
 
 
         public AddDogPicturePage()
         {
             _dogFurColorEntry.SetBinding(Entry.TextProperty, "FurColorOfDog");
             _dogNameEntry.SetBinding(Entry.TextProperty, "DogName");
+            _dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
 
 
@@ -29,7 +32,7 @@ namespace ASampleApp.View
                 Children = {
                     _dogNameEntry,
                     _dogFurColorEntry,
-                    _dogPictureURL,
+                    _dogPictureURLEntry,
                     _submitNameandFurColorButton,
 
                 }

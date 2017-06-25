@@ -24,5 +24,8 @@ namespace ASampleApp
 
         [MaxLength(250)]
         public string FurColorHexColor { get; set; }
+
+        [MaxLength(250)]
+        public string DogPictureURL { get; set; }
 	}
 }

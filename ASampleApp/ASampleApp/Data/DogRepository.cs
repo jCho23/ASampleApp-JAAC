@@ -22,6 +22,13 @@ namespace ASampleApp.Data
 			sqliteConnection.Insert(new Dog { Name = name, FurColor = furColor, FurColorHexColor = "#0000ff" }); //Id = id});
 
 		}
+        public void AddNewDog(string name, string furColor, string myURL)
+		{
+			//int result = 0;
+			//result = sqliteConnection.Insert(new Dog { Name = name, FurColor = furColor, FurColorHexColor = "#0000ff" }); //Id = id});
+            sqliteConnection.Insert(new Dog { Name = name, FurColor = furColor, DogPictureURL = myURL, FurColorHexColor = "#0000ff" }); //Id = id});
+
+		}
 
         public List<Dog> GetAllDogs(){
             return sqliteConnection.Table<Dog>().ToList();

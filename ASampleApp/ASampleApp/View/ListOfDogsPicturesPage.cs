@@ -23,9 +23,10 @@ namespace ASampleApp.View
             myTemplate.SetBinding(ImageCell.TextProperty, nameof(model.Name));
             myTemplate.SetBinding(ImageCell.DetailProperty, nameof(model.FurColor));
 
-            myTemplate.SetValue(ImageCell.ImageSourceProperty, new Uri("https://kasehavanese.files.wordpress.com/2014/10/izzyy1.jpg?w=519&h=346&crop=1"));
+            //myTemplate.SetValue(ImageCell.ImageSourceProperty, new Uri("https://kasehavanese.files.wordpress.com/2014/10/izzyy1.jpg?w=519&h=346&crop=1"));
+            myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
 
-            _dogList.ItemTemplate = myTemplate;
+			_dogList.ItemTemplate = myTemplate;
 
             Content = new StackLayout
             {
