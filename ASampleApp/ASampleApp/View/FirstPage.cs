@@ -52,7 +52,14 @@ namespace ASampleApp.View
 
             _getListOfDogsButton.Clicked  += _getListOfDogsButton_Clicked;
             _getListOfDogsPicturesButton.Clicked += _getListOfDogsPicturesButton_Clicked;
+            _addDogPicture.Clicked += _addDogPicture_Clicked;
+
         }
+
+        private void _addDogPicture_Clicked(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new AddDogPicturePage()));
+		}
 
         private void _getListOfDogsPicturesButton_Clicked(object sender, EventArgs e)
         {
@@ -65,7 +72,8 @@ namespace ASampleApp.View
 
             _getListOfDogsButton.Clicked -= _getListOfDogsButton_Clicked;
             _getListOfDogsPicturesButton.Clicked -= _getListOfDogsPicturesButton_Clicked;
-        }
+			_addDogPicture.Clicked -= _addDogPicture_Clicked;
+		}
 
 
         void _getListOfDogsButton_Clicked(object sender, EventArgs e)
