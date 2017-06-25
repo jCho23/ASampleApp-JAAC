@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace ASampleApp.View
 {
-    public class ListOfDogsPicturesPage : BaseContentPage<ListOfDogsViewModel>
+    public class ListOfDogsPicturesPage : BaseContentPage<ListOfDogsPicturesViewModel>
     {
         ListView _dogList;
 

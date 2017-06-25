@@ -20,8 +20,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helper\DogViewCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListOfDogsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Base\BaseContentPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)View\DogPicturePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DogPicturePageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\AddDogPicturePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AddDogPicturePageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\ListOfDogsPicturesPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListOfDogsPicturesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\AuthPages.cs" />
