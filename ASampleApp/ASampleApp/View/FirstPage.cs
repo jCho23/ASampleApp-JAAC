@@ -19,6 +19,7 @@ namespace ASampleApp.View
         Button _addDogPicture = new Button { Text = "Add Dog Picture" };
         Button _getListOfDogsPicturesButton = new Button { Text = "Get List of Dogs Pictures" };
         Button _authenticatePagesButton = new Button { Text = "Auth Pages" };
+        Button _textToSpeechPageButton = new Button { Text = "Text to Speech Page" };
 
         Label _dbPath = new Label() { Text = FileAccessHelper.GetLocalFilePath("people.db3") };
 
@@ -41,6 +42,7 @@ namespace ASampleApp.View
                     _addDogPicture,
                     _getListOfDogsPicturesButton,
                     _authenticatePagesButton,
+                    _textToSpeechPageButton,
                 }
             };
 
@@ -53,8 +55,14 @@ namespace ASampleApp.View
             _getListOfDogsButton.Clicked  += _getListOfDogsButton_Clicked;
             _getListOfDogsPicturesButton.Clicked += _getListOfDogsPicturesButton_Clicked;
             _addDogPicture.Clicked += _addDogPicture_Clicked;
+            _textToSpeechPageButton.Clicked += _textToSpeechPageButton_Clicked;
 
         }
+
+        private void _textToSpeechPageButton_Clicked(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new TextToSpeechPage()));
+		}
 
         private void _addDogPicture_Clicked(object sender, EventArgs e)
         {
@@ -73,6 +81,7 @@ namespace ASampleApp.View
             _getListOfDogsButton.Clicked -= _getListOfDogsButton_Clicked;
             _getListOfDogsPicturesButton.Clicked -= _getListOfDogsPicturesButton_Clicked;
 			_addDogPicture.Clicked -= _addDogPicture_Clicked;
+            _textToSpeechPageButton.Clicked -= _textToSpeechPageButton_Clicked;
 		}
 
 

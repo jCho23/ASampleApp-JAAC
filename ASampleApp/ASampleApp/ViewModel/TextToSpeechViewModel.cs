@@ -67,20 +67,22 @@ namespace ASampleApp.ViewModel
 				OnDisplayNoCameraDetected();
 				return;
 			}
-			var ocrResults = await GetOcrResultsFromMediaFile(mediaFile);
-			if (ocrResults == null)
-			{
-				OnOCRFailed();
-				return;
-			}
-			var listOfStringsFromOcrResults = GetTextFromOcrResults(ocrResults);
-			var spellCheckedlistOfStringsFromOcrResults = await GetSpellCheckedStringList(listOfStringsFromOcrResults);
-			if (spellCheckedlistOfStringsFromOcrResults == null)
-			{
-				OnSpellCheckFailed();
-				return;
-			}
-			SpeakText(spellCheckedlistOfStringsFromOcrResults);
+            //Need to display media file in page!!>>>
+
+			//var ocrResults = await GetOcrResultsFromMediaFile(mediaFile);
+			//if (ocrResults == null)
+			//{
+			//	OnOCRFailed();
+			//	return;
+			//}
+			//var listOfStringsFromOcrResults = GetTextFromOcrResults(ocrResults);
+			//var spellCheckedlistOfStringsFromOcrResults = await GetSpellCheckedStringList(listOfStringsFromOcrResults);
+			//if (spellCheckedlistOfStringsFromOcrResults == null)
+			//{
+			//	OnSpellCheckFailed();
+			//	return;
+			//}
+			//SpeakText(spellCheckedlistOfStringsFromOcrResults);
 		}
 		async Task<MediaFile> GetMediaFileFromCamera(string photoName)
 		{
@@ -230,7 +232,7 @@ namespace ASampleApp.ViewModel
 		//void OnInternetConnectionUnavailable() =>
 			//InternetConnectionUnavailable?.Invoke(this, EventArgs.Empty);
 		#endregion
-		#region Classes
+		//#region Classes
 		//class OcrTextLocationModel
 		//{
 		//	public OcrTextLocationModel(string text, int top, int left)
@@ -243,6 +245,6 @@ namespace ASampleApp.ViewModel
 		//	public double Top { get; }
 		//	public double Left { get; }
 		//}
-		#endregion
+		//#endregion
 	}
 }
