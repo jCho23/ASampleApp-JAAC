@@ -26,6 +26,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ListOfDogsPicturesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\AuthPages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AuthViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\TextToSpeechPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TextToSpeechViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
