@@ -21,7 +21,9 @@ namespace ASampleApp.ViewModel
         //bool _isActivityIndicatorDisplayed;
         bool _isInternetConnectionInUse;
 		Command _takePictureButtonCommand;
+        Image _dogImage;
 		#endregion
+
 		#region Events
 		//public event EventHandler OCRFailed;
 		//public event EventHandler SpellCheckFailed;
@@ -29,6 +31,7 @@ namespace ASampleApp.ViewModel
 		//public event EventHandler InvalidComputerVisionAPIKey;
 		//public event EventHandler InternetConnectionUnavailable;
 		#endregion
+
 		#region Properties
 		public Command TakePictureButtonCommand => _takePictureButtonCommand ??
 			(_takePictureButtonCommand = new Command(async () => await ExecuteTakePictureButtonCommand()));
@@ -42,6 +45,16 @@ namespace ASampleApp.ViewModel
 			get => _spokenTextLabelText;
 			set => SetProperty(ref _spokenTextLabelText, value);
 		}
+
+        public Image DogImage
+		{
+			get => _dogImage;
+			set => SetProperty(ref _dogImage, value);
+		}
+
+
+
+
 		//public string ActivityIndicatorLabelText
 		//{
 		//	get => _activityIndicatorLabelText;
@@ -53,6 +66,7 @@ namespace ASampleApp.ViewModel
 		//	set => SetProperty(ref _isActivityIndicatorDisplayed, value);
 		//}
 		#endregion
+
 		#region Methods
 		async Task ExecuteTakePictureButtonCommand()
 		{
