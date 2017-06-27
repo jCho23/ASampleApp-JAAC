@@ -24,9 +24,11 @@ namespace ASampleApp.View
             var spokenTextLabel = new Label { HorizontalTextAlignment = TextAlignment.Center };
             spokenTextLabel.SetBinding(Label.TextProperty, nameof(MyViewModel.SpokenTextLabelText));
 
-            myImage.SetBinding(Image.SourceProperty, nameof(MyViewModel.DogImage));
-
-
+            //myImage.SetBinding(Image.SourceProperty, nameof(MyViewModel.DogImage));
+            if (MyViewModel.DogImage != null)
+            {
+                myImage = MyViewModel.DogImage;
+            }
 
             //var activityIndicatorLabel = new Label { FontAttributes = FontAttributes.Italic };
             //activityIndicatorLabel.SetBinding(Label.TextProperty, nameof(ViewModel.ActivityIndicatorLabelText));
@@ -57,10 +59,15 @@ namespace ASampleApp.View
             //ViewModel.OCRFailed += HandleOCRFailed;
             //ViewModel.SpellCheckFailed += HandleSpellCheckFailed;
             MyViewModel.NoCameraDetected += HandleNoCameraDetected;
-            //ViewModel.InvalidComputerVisionAPIKey += HandleInvalidComputerVisionAPIKey;
-            //HttpHelpers.InvalidBingSpellCheckAPIKey += HandleInvalidBingSpellCheckAPIKey;
-            //ViewModel.InternetConnectionUnavailable += HandleInternetConnectionUnavailable;
-            //HttpHelpers.Error429_TooManySpellCheckAPIRequests += HandleError429_TooManySpellCheckAPIRequests;
+			//ViewModel.InvalidComputerVisionAPIKey += HandleInvalidComputerVisionAPIKey;
+			//HttpHelpers.InvalidBingSpellCheckAPIKey += HandleInvalidBingSpellCheckAPIKey;
+			//ViewModel.InternetConnectionUnavailable += HandleInternetConnectionUnavailable;
+			//HttpHelpers.Error429_TooManySpellCheckAPIRequests += HandleError429_TooManySpellCheckAPIRequests;
+			if (MyViewModel.DogImage != null)
+			{
+				myImage = MyViewModel.DogImage;
+			}
+
         }
         protected override void OnDisappearing()
         {

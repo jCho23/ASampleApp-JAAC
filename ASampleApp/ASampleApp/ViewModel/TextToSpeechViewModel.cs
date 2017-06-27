@@ -110,6 +110,15 @@ namespace ASampleApp.ViewModel
 				PhotoSize = PhotoSize.Small,
 				DefaultCamera = CameraDevice.Rear,
 			});
+            Image tempImage = new Image();
+            tempImage.Source = ImageSource.FromStream(() =>
+            {
+                var stream = file.GetStream();
+                file.Dispose();
+                return stream;
+            });
+            this.DogImage = tempImage;
+         //   1 = 1;
 			return file;
 		}
 		//async Task<OcrResults> GetOcrResultsFromMediaFile(MediaFile mediaFile)
