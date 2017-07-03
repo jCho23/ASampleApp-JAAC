@@ -8,6 +8,7 @@ using SQLite;
 using ASampleApp.View.Base;
 using Plugin.Media;
 using System.Threading.Tasks;
+using Plugin.Media.Abstractions;
 
 namespace ASampleApp.View
 {
@@ -22,6 +23,8 @@ namespace ASampleApp.View
         Button _submitNameandFurColorButton = new Button { Text = "Submit" };
         Button _takeDogPictureButton = new Button { Text = "Take Dog Picture" };
         Button _saveDogPictureButton = new Button { Text = "Save Dog Picture", IsEnabled = false };
+
+        MediaFile _file; 
 
         public AddDogPicturePage()
         {
@@ -68,16 +71,17 @@ namespace ASampleApp.View
                 DisplayAlert("No Camera", ":( No camera available.", "OK");
                 return;
             }
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            //var file
+            _file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 //PhotoSize = PhotoSize.Small,
                 //CustomPhotoSize = 50,
                 Directory = "Sample",
                 Name = "test.jpg"
             });
-            if (file == null)
+            if (_file == null)
                 return;
-            await DisplayAlert("File Location", file.Path, "OK");
+            await DisplayAlert("File Location", _file.Path, "OK");
             //_dogImage.Source = ImageSource.FromStream(() =>
             //{
             //    var stream = file.GetStream();
@@ -85,14 +89,14 @@ namespace ASampleApp.View
             //    return stream;
             //});
             //or:
-            _dogImage.Source = ImageSource.FromFile(file.Path);
+            _dogImage.Source = ImageSource.FromFile(_file.Path);
             _saveDogPictureButton.IsEnabled = true;
-            file.Dispose();
+            _file.Dispose();
         }
 
         void _saveDogPictureByFile_Clicked(object sender, EventArgs e)
         {
-
+            App.DogRepo.AddDogImageByFile(_dogNameEntry, _dogFurColorEntry, _);
         }
 
         protected override void OnDisappearing()
