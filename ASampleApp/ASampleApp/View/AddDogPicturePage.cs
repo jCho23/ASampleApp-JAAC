@@ -93,10 +93,17 @@ namespace ASampleApp.View
             //_file.Dispose();
         }
 
-        void _saveDogPictureByFile_Clicked(object sender, EventArgs e)
+        async void _saveDogPictureByFile_Clicked(object sender, EventArgs e)
         {
             App.DogRepo.AddDogImageByFile(_dogNameEntry.Text, _dogFurColorEntry.Text, _file.Path);
-            DisplayAlert("Dog Saved", "Dog Saved", "OK");
+            var answer = await DisplayAlert("Dog Saved", "Dog Saved", "OK", "NO");
+
+            if (answer == true)
+            {
+                //TODO Look for list of Dog picture page
+                //This will create unecessary listpages
+                Device.BeginInvokeOnMainThread(()=>Navigation.PushAsync((new ListOfDogsPicturesPage())));
+            }
 
         }
 
