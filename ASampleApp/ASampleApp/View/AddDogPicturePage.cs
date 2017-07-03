@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using ASampleApp.ViewModel;
+
 using ASampleApp.Data;
 using SQLite;
 //using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -16,6 +17,7 @@ namespace ASampleApp.View
         Entry _dogPictureURLEntry = new Entry { Placeholder = "Type URL of Dog Picture" };
 
 		Button _submitNameandFurColorButton = new Button { Text = "Submit" };
+        Button _takeDogPictureButton = new Button { Text = "Take Dog Picture" };
 
 
         public AddDogPicturePage()
@@ -26,6 +28,7 @@ namespace ASampleApp.View
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
 
 
+
             Content = new StackLayout
             {
                 Margin = 20,
@@ -34,6 +37,7 @@ namespace ASampleApp.View
                     _dogFurColorEntry,
                     _dogPictureURLEntry,
                     _submitNameandFurColorButton,
+                    _takeDogPictureButton,
 
                 }
             };
@@ -44,7 +48,7 @@ namespace ASampleApp.View
         {
             base.OnAppearing();
             _submitNameandFurColorButton.Clicked += _submitNameandFurColorButton_Clicked;
-
+            _takeDogPictureButton.Clicked += _takeDogPictureButton_Clicked;
 
         }
 
@@ -53,13 +57,18 @@ namespace ASampleApp.View
             Device.BeginInvokeOnMainThread(()=>Navigation.PushAsync(new ListOfDogsPicturesPage()));
         }
 
+		void _takeDogPictureButton_Clicked(object sender, EventArgs e)
+		{
+
+		}
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             _submitNameandFurColorButton.Clicked -= _submitNameandFurColorButton_Clicked;
+			_takeDogPictureButton.Clicked -= _takeDogPictureButton_Clicked;
 
-        }
+		}
 
     }
 }
