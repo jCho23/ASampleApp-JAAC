@@ -24,10 +24,18 @@ namespace ASampleApp.View
             myTemplate.SetBinding(ImageCell.DetailProperty, nameof(model.FurColor));
 
             //myTemplate.SetValue(ImageCell.ImageSourceProperty, new Uri("https://kasehavanese.files.wordpress.com/2014/10/izzyy1.jpg?w=519&h=346&crop=1"));
-            //         myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
 
-            myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureFile));
 
+            //if (model.DogPictureFile != null)
+            if (MyViewModel.ListOfDoggos.the dog of the cell.dogimage url = !null)
+            {
+				myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureFile));
+			}
+
+            else
+            {
+                myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
+            }
 
             _dogList.ItemTemplate = myTemplate;
 
