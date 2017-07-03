@@ -19,14 +19,17 @@ namespace ASampleApp.View
             _dogList.SetBinding(ListView.ItemsSourceProperty, nameof(MyViewModel.ListOfDoggos));
 
             var myTemplate = new DataTemplate(typeof(ImageCell));
-            var model = BindingContext as Dog; 
+            var model = BindingContext as Dog;
             myTemplate.SetBinding(ImageCell.TextProperty, nameof(model.Name));
             myTemplate.SetBinding(ImageCell.DetailProperty, nameof(model.FurColor));
 
             //myTemplate.SetValue(ImageCell.ImageSourceProperty, new Uri("https://kasehavanese.files.wordpress.com/2014/10/izzyy1.jpg?w=519&h=346&crop=1"));
-            myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
+            //         myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
 
-			_dogList.ItemTemplate = myTemplate;
+            myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureFile));
+
+
+            _dogList.ItemTemplate = myTemplate;
 
             Content = new StackLayout
             {

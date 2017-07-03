@@ -46,7 +46,6 @@ namespace ASampleApp.View
                     _dogImage
                 }
             };
-
         }
 
         protected override void OnAppearing()
@@ -91,12 +90,14 @@ namespace ASampleApp.View
             //or:
             _dogImage.Source = ImageSource.FromFile(_file.Path);
             _saveDogPictureButton.IsEnabled = true;
-            _file.Dispose();
+            //_file.Dispose();
         }
 
         void _saveDogPictureByFile_Clicked(object sender, EventArgs e)
         {
-            App.DogRepo.AddDogImageByFile(_dogNameEntry, _dogFurColorEntry, _);
+            App.DogRepo.AddDogImageByFile(_dogNameEntry.Text, _dogFurColorEntry.Text, _file.Path);
+            DisplayAlert("Dog Saved", "Dog Saved", "OK");
+
         }
 
         protected override void OnDisappearing()
