@@ -51,7 +51,9 @@ namespace ASampleApp.View
             base.OnAppearing();
             _submitNameandFurColorButton.Clicked += _submitNameandFurColorButton_Clicked;
             _takeDogPictureButton.Clicked += _takeDogPictureButton_Clicked;
-        }
+			_saveDogPictureButton.Clicked += _saveDogPictureByFile_Clicked;
+
+		}
 
         void _submitNameandFurColorButton_Clicked(object sender, EventArgs e)
         {
@@ -88,12 +90,17 @@ namespace ASampleApp.View
             file.Dispose();
         }
 
+        void _saveDogPictureByFile_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             _submitNameandFurColorButton.Clicked -= _submitNameandFurColorButton_Clicked;
             _takeDogPictureButton.Clicked -= _takeDogPictureButton_Clicked;
+            _saveDogPictureButton.Clicked -= _saveDogPictureByFile_Clicked;
         }
-
     }
 }
