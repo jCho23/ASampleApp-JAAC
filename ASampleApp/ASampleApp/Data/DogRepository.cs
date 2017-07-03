@@ -37,5 +37,10 @@ namespace ASampleApp.Data
         public Dog GetFirstDog(){
             return sqliteConnection.Table<Dog>().FirstOrDefault();
         }
+
+        public void AddDogImageByFile(string name, string furColor, string myFile)
+        {
+            sqliteConnection.Insert(new Dog { Name = name, FurColor = furColor, DogPictureFile = myFile});
+        }
     }
 }

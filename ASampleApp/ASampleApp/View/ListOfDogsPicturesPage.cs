@@ -19,7 +19,7 @@ namespace ASampleApp.View
             _dogList.SetBinding(ListView.ItemsSourceProperty, nameof(MyViewModel.ListOfDoggos));
 
             var myTemplate = new DataTemplate(typeof(ImageCell));
-            var model = BindingContext as Dog;
+            var model = BindingContext as Dog; 
             myTemplate.SetBinding(ImageCell.TextProperty, nameof(model.Name));
             myTemplate.SetBinding(ImageCell.DetailProperty, nameof(model.FurColor));
 
