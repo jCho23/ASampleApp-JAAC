@@ -19,8 +19,9 @@ namespace ASampleApp.View
         Entry _dogPictureURLEntry = new Entry { Placeholder = "Type URL of Dog Picture" };
         Image _dogImage = new Image();
 
-		Button _submitNameandFurColorButton = new Button { Text = "Submit" };
+        Button _submitNameandFurColorButton = new Button { Text = "Submit" };
         Button _takeDogPictureButton = new Button { Text = "Take Dog Picture" };
+        Button _saveDogPictureButton = new Button { Text = "Save Dog Picture", IsEnabled = false };
 
         public AddDogPicturePage()
         {
@@ -38,6 +39,7 @@ namespace ASampleApp.View
                     _dogPictureURLEntry,
                     _submitNameandFurColorButton,
                     _takeDogPictureButton,
+                    _saveDogPictureButton,
                     _dogImage
                 }
             };
@@ -53,44 +55,45 @@ namespace ASampleApp.View
 
         void _submitNameandFurColorButton_Clicked(object sender, EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(()=>Navigation.PushAsync(new ListOfDogsPicturesPage()));
+            Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new ListOfDogsPicturesPage()));
         }
 
         async void _takeDogPictureButton_Clicked(object sender, EventArgs e)
-		{
-				 CrossMedia.Current.Initialize();
-				if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-				{
-					DisplayAlert("No Camera", ":( No camera available.", "OK");
-					return;
-				}
-				var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-				{
-					//PhotoSize = PhotoSize.Small,
-					//CustomPhotoSize = 50,
-					Directory = "Sample",
-					Name = "test.jpg"
-				});
-				if (file == null)
-					return;
-				await DisplayAlert("File Location", file.Path, "OK");
-				//_dogImage.Source = ImageSource.FromStream(() =>
-				//{
-				//    var stream = file.GetStream();
-				//    file.Dispose();
-				//    return stream;
-				//});
-				//or:
-				_dogImage.Source = ImageSource.FromFile(file.Path);
-				file.Dispose();
-		}
+        {
+            CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                DisplayAlert("No Camera", ":( No camera available.", "OK");
+                return;
+            }
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                //PhotoSize = PhotoSize.Small,
+                //CustomPhotoSize = 50,
+                Directory = "Sample",
+                Name = "test.jpg"
+            });
+            if (file == null)
+                return;
+            await DisplayAlert("File Location", file.Path, "OK");
+            //_dogImage.Source = ImageSource.FromStream(() =>
+            //{
+            //    var stream = file.GetStream();
+            //    file.Dispose();
+            //    return stream;
+            //});
+            //or:
+            _dogImage.Source = ImageSource.FromFile(file.Path);
+            _saveDogPictureButton.IsEnabled = true;
+            file.Dispose();
+        }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             _submitNameandFurColorButton.Clicked -= _submitNameandFurColorButton_Clicked;
-			_takeDogPictureButton.Clicked -= _takeDogPictureButton_Clicked;
-		}
+            _takeDogPictureButton.Clicked -= _takeDogPictureButton_Clicked;
+        }
 
     }
 }
