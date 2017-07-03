@@ -32,6 +32,7 @@ namespace ASampleApp.View
             _dogNameEntry.SetBinding(Entry.TextProperty, "DogName");
             _dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
+            _dogImage.SetBinding(Image.SourceProperty, nameof(MyViewModel.DogPictureSource));
 
             Content = new StackLayout
             {

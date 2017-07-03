@@ -12,6 +12,7 @@ namespace ASampleApp.ViewModel
 		string _displayItem, _nameOfDog, _furColorOfDog, _displayListOfDogPictures;
         string _dogPictureURL = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg";
         string _dogPictureSource;
+		string _dogPictureFile;
 
 		public ICommand DisplayItemCommand { get; set; }
 
@@ -46,7 +47,6 @@ namespace ASampleApp.ViewModel
 			get => _dogPictureFile;
 			set => SetProperty(ref _dogPictureFile, value);
 		}
-
 
 		public string DogPictureSource              
         {
