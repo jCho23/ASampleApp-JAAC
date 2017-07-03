@@ -6,6 +6,8 @@ using ASampleApp.Data;
 using SQLite;
 //using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ASampleApp.View.Base;
+using Plugin.Media;
+using System.Threading.Tasks;
 
 namespace ASampleApp.View
 {
@@ -15,10 +17,10 @@ namespace ASampleApp.View
         Entry _dogFurColorEntry = new Entry { Placeholder = "Enter Dog Fur Color" };
         //Entry _dogPictureURLEntry = new Entry { Text = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg" };
         Entry _dogPictureURLEntry = new Entry { Placeholder = "Type URL of Dog Picture" };
+        Image _dogImage = new Image();
 
 		Button _submitNameandFurColorButton = new Button { Text = "Submit" };
         Button _takeDogPictureButton = new Button { Text = "Take Dog Picture" };
-
 
         public AddDogPicturePage()
         {
@@ -38,6 +40,7 @@ namespace ASampleApp.View
                     _dogPictureURLEntry,
                     _submitNameandFurColorButton,
                     _takeDogPictureButton,
+                    _dogImage
 
                 }
             };
@@ -56,10 +59,36 @@ namespace ASampleApp.View
         {
             Device.BeginInvokeOnMainThread(()=>Navigation.PushAsync(new ListOfDogsPicturesPage()));
         }
-
-		void _takeDogPictureButton_Clicked(object sender, EventArgs e)
+        0-
+        async void _takeDogPictureButton_Clicked(object sender, EventArgs e)
 		{
-
+           // {
+				 CrossMedia.Current.Initialize();
+				if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+				{
+					DisplayAlert("No Camera", ":( No camera available.", "OK");
+					return;
+				}
+				var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+				{
+					//PhotoSize = PhotoSize.Small,
+					//CustomPhotoSize = 50,
+					Directory = "Sample",
+					Name = "test.jpg"
+				});
+				if (file == null)
+					return;
+				await DisplayAlert("File Location", file.Path, "OK");
+				//_dogImage.Source = ImageSource.FromStream(() =>
+				//{
+				//    var stream = file.GetStream();
+				//    file.Dispose();
+				//    return stream;
+				//});
+				//or:
+				_dogImage.Source = ImageSource.FromFile(file.Path);
+				file.Dispose();
+			//};
 		}
 
         protected override void OnDisappearing()
