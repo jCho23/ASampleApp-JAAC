@@ -30,5 +30,8 @@ namespace ASampleApp
 
         [MaxLength(250)]
         public string DogPictureFile { get; set; }
+
+		[MaxLength(250)]
+		public string DogPictureSource { get; set; }
 	}
 }
