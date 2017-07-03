@@ -29,8 +29,6 @@ namespace ASampleApp.View
             _dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
 
-
-
             Content = new StackLayout
             {
                 Margin = 20,
@@ -41,7 +39,6 @@ namespace ASampleApp.View
                     _submitNameandFurColorButton,
                     _takeDogPictureButton,
                     _dogImage
-
                 }
             };
 
@@ -52,17 +49,15 @@ namespace ASampleApp.View
             base.OnAppearing();
             _submitNameandFurColorButton.Clicked += _submitNameandFurColorButton_Clicked;
             _takeDogPictureButton.Clicked += _takeDogPictureButton_Clicked;
-
         }
 
         void _submitNameandFurColorButton_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(()=>Navigation.PushAsync(new ListOfDogsPicturesPage()));
         }
-        0-
+
         async void _takeDogPictureButton_Clicked(object sender, EventArgs e)
 		{
-           // {
 				 CrossMedia.Current.Initialize();
 				if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
 				{
@@ -88,7 +83,6 @@ namespace ASampleApp.View
 				//or:
 				_dogImage.Source = ImageSource.FromFile(file.Path);
 				file.Dispose();
-			//};
 		}
 
         protected override void OnDisappearing()
@@ -96,7 +90,6 @@ namespace ASampleApp.View
             base.OnDisappearing();
             _submitNameandFurColorButton.Clicked -= _submitNameandFurColorButton_Clicked;
 			_takeDogPictureButton.Clicked -= _takeDogPictureButton_Clicked;
-
 		}
 
     }
