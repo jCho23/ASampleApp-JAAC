@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using ASampleApp.ViewModel;
-
 using ASampleApp.Data;
 using SQLite;
 //using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -28,11 +27,12 @@ namespace ASampleApp.View
 
         public AddDogPicturePage()
         {
-            _dogFurColorEntry.SetBinding(Entry.TextProperty, "FurColorOfDog");
             _dogNameEntry.SetBinding(Entry.TextProperty, "DogName");
-            _dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
+			_dogFurColorEntry.SetBinding(Entry.TextProperty, "FurColorOfDog");
+			_dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
             _dogImage.SetBinding(Image.SourceProperty, nameof(MyViewModel.DogPictureSource));
+         
 
             Content = new StackLayout
             {
@@ -96,7 +96,9 @@ namespace ASampleApp.View
 
         async void _saveDogPictureByFile_Clicked(object sender, EventArgs e)
         {
-            App.DogRepo.AddDogImageByFile(_dogNameEntry.Text, _dogFurColorEntry.Text, _file.Path);
+            //App.DogRepo.AddDogImageByFile(_dogNameEntry.Text, _dogFurColorEntry.Text, _file.Path);
+            MyViewModel.AddNewDogPicture.Execute("");
+                       
             var answer = await DisplayAlert("Dog Saved", "Dog Saved", "OK", "NO");
 
             if (answer == true)
@@ -105,7 +107,6 @@ namespace ASampleApp.View
                 //This will create unecessary listpages
                 Device.BeginInvokeOnMainThread(()=>Navigation.PushAsync((new ListOfDogsPicturesPage())));
             }
-
         }
 
         protected override void OnDisappearing()

@@ -7,68 +7,74 @@ using ASampleApp.View;
 
 namespace ASampleApp.ViewModel
 {
-	public class AddDogPicturePageViewModel : BaseViewModel
-	{
-		string _displayItem, _nameOfDog, _furColorOfDog, _displayListOfDogPictures;
+    public class AddDogPicturePageViewModel : BaseViewModel
+    {
+        string _displayItem, _nameOfDog, _furColorOfDog, _displayListOfDogPictures;
         string _dogPictureURL = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg";
         string _dogPictureSource;
-		string _dogPictureFile;
+        string _dogPictureFile;
 
-		public ICommand DisplayItemCommand { get; set; }
+        public ICommand DisplayItemCommand { get; set; }
+        public ICommand DisplayListOfDogPictures { get; set; }
+        public ICommand AddNewDogPicture { get; set; }
 
-		public ICommand DisplayListOfDogPictures { get; set; }
-
-		public string DisplayItem
-		{
-			get { return _displayItem; }
-			set { SetProperty(ref _displayItem, value); }
-		}
+        public string DisplayItem
+        {
+            get { return _displayItem; }
+            set { SetProperty(ref _displayItem, value); }
+        }
 
         public string DogPictureURL
         {
             get { return _dogPictureURL; }
-            set { SetProperty(ref _dogPictureURL, value);}
+            set { SetProperty(ref _dogPictureURL, value); }
         }
 
-		public string DogName
-		{
-			get { return _nameOfDog; }
-			set { SetProperty(ref _nameOfDog, value); }
-		}
-
-		public string FurColorOfDog
-		{
-			get => _furColorOfDog;
-			set => SetProperty(ref _furColorOfDog, value);
-		}
-
-		public string DogPictureFile
-		{
-			get => _dogPictureFile;
-			set => SetProperty(ref _dogPictureFile, value);
-		}
-
-		public string DogPictureSource              
+        public string DogName
         {
-			get => _dogPictureSource;
-			set => SetProperty(ref _dogPictureSource, value);
+            get { return _nameOfDog; }
+            set { SetProperty(ref _nameOfDog, value); }
+        }
+
+        public string FurColorOfDog
+        {
+            get => _furColorOfDog;
+            set => SetProperty(ref _furColorOfDog, value);
+        }
+
+        public string DogPictureFile
+        {
+            get => _dogPictureFile;
+            set => SetProperty(ref _dogPictureFile, value);
+        }
+
+        public string DogPictureSource
+        {
+            get => _dogPictureSource;
+            set => SetProperty(ref _dogPictureSource, value);
         }
 
         public AddDogPicturePageViewModel()
-		{
-			DisplayItemCommand = new Command(SubmitNewDogAction);
-			DisplayListOfDogPictures = new Command(GetListOfDogPictures);
-		}
+        {
+            DisplayItemCommand = new Command(SubmitNewDogAction);
+            DisplayListOfDogPictures = new Command(GetListOfDogPictures);
+            AddNewDogPicture = new Command(MyAddNewDogPicture);
+        }
 
-		private void GetListOfDogPictures(object obj)
-		{
-			throw new NotImplementedException();
-		}
+        private void MyAddNewDogPicture()
+        {
+            App.DogRepo.AddDogImageByFile(this.DogName, this.FurColorOfDog, this.DogPictureSource);
+        }
 
-		void SubmitNewDogAction()
-		{
+        private void GetListOfDogPictures(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        void SubmitNewDogAction()
+        {
             App.DogRepo.AddNewDog(this.DogName, this.FurColorOfDog, this.DogPictureURL);
-			//new DogRepository(ASampleApp.App.DogRepo.ToString()).AddNewDog(DogName, FurColorOfDog);
-		}
-	}
+            //new DogRepository(ASampleApp.App.DogRepo.ToString()).AddNewDog(DogName, FurColorOfDog);
+        }
+    }
 }
