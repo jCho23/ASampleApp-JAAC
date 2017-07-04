@@ -27,10 +27,10 @@ namespace ASampleApp.View
 
         public AddDogPicturePage()
         {
-            _dogNameEntry.SetBinding(Entry.TextProperty, "DogName");
-			_dogFurColorEntry.SetBinding(Entry.TextProperty, "FurColorOfDog");
+            _dogNameEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogName));
+            _dogFurColorEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.FurColorOfDog));//"FurColorOfDog");
 			_dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
-            _submitNameandFurColorButton.SetBinding(Button.CommandProperty, "DisplayItemCommand");
+            _submitNameandFurColorButton.SetBinding(Button.CommandProperty, nameof(MyViewModel.DisplayItemCommand)); //"DisplayItemCommand");
             _dogImage.SetBinding(Image.SourceProperty, nameof(MyViewModel.DogPictureSource));
          
 
