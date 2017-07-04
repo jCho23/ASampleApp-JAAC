@@ -10,7 +10,7 @@ namespace ASampleApp.ViewModel
     public class AddDogPicturePageViewModel : BaseViewModel
     {
         string _displayItem, _nameOfDog, _furColorOfDog, _displayListOfDogPictures;
-        string _dogPictureURL = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg";
+        string _dogPictureURL; // = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg";
         string _dogPictureSource;
         string _dogPictureFile;
 
@@ -24,12 +24,7 @@ namespace ASampleApp.ViewModel
             set { SetProperty(ref _displayItem, value); }
         }
 
-        public string DogPictureURL
-        {
-            get { return _dogPictureURL; }
-            set { SetProperty(ref _dogPictureURL, value); }
-        }
-
+ 
         public string DogName
         {
             get { return _nameOfDog; }
@@ -45,13 +40,23 @@ namespace ASampleApp.ViewModel
         public string DogPictureFile
         {
             get => _dogPictureFile;
-            set => SetProperty(ref _dogPictureFile, value);
+            set { SetProperty(ref _dogPictureFile, value);
+                DogPictureSource = DogPictureFile;
+            }
         }
 
-        public string DogPictureSource
+		public string DogPictureURL
+		{
+			get { return _dogPictureURL; }
+			set { SetProperty(ref _dogPictureURL, value);
+                DogPictureSource = DogPictureURL;
+            }
+		}
+
+		public string DogPictureSource
         {
             get => _dogPictureSource;
-            set => SetProperty(ref _dogPictureSource, value);
+            set { SetProperty(ref _dogPictureSource, value); }
         }
 
         public AddDogPicturePageViewModel()

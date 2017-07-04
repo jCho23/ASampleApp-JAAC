@@ -16,7 +16,7 @@ namespace ASampleApp.View
         Entry _dogNameEntry = new Entry { Placeholder = "Enter Name of Dog" };
         Entry _dogFurColorEntry = new Entry { Placeholder = "Enter Dog Fur Color" };
         //Entry _dogPictureURLEntry = new Entry { Text = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg" };
-        Entry _dogPictureURLEntry = new Entry { Placeholder = "Type URL of Dog Picture" };
+        Entry _dogPictureURLEntry; // = new Entry { Placeholder = "Type URL of Dog Picture" };
         Image _dogImage = new Image();
 
         Button _submitNameandFurColorButton = new Button { Text = "Submit" };
@@ -27,6 +27,10 @@ namespace ASampleApp.View
 
         public AddDogPicturePage()
         {
+
+            _dogPictureURLEntry = new Entry() { Text = "https://s-media-cache-ak0.pinimg.com/736x/a9/e5/49/a9e5491335b070025a517cf748bb317c--havanese-puppies-teacup-puppies.jpg" };
+		
+
             _dogNameEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogName));
             _dogFurColorEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.FurColorOfDog));//"FurColorOfDog");
 			_dogPictureURLEntry.SetBinding(Entry.TextProperty, nameof(MyViewModel.DogPictureURL));
@@ -79,6 +83,7 @@ namespace ASampleApp.View
             });
             if (_file == null)
                 return;
+            
             MyViewModel.DogPictureFile = _file.Path;
             //Need to bind DogPictureSource and _file.Path
 

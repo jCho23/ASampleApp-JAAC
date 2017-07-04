@@ -26,16 +26,21 @@ namespace ASampleApp.View
             //myTemplate.SetValue(ImageCell.ImageSourceProperty, new Uri("https://kasehavanese.files.wordpress.com/2014/10/izzyy1.jpg?w=519&h=346&crop=1"));
 
 
-            //if (model.DogPictureFile != null)
-            if (MyViewModel.ListOfDoggos.the dog of the cell.dogimage url = !null)
-            {
-				myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureFile));
-			}
+            myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureSource));
 
-            else
-            {
-                myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
-            }
+            //if (model.DogPictureFile != null)
+   //         if (MyViewModel.ListOfDoggos.
+
+
+   //             the dog of the cell.dogimage url = !null)
+   //         {
+			//	myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureFile));
+			//}
+
+            //else
+            //{
+            //    myTemplate.SetBinding(ImageCell.ImageSourceProperty, nameof(model.DogPictureURL));
+            //}
 
             _dogList.ItemTemplate = myTemplate;
 
