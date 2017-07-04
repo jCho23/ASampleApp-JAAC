@@ -33,7 +33,6 @@ namespace ASampleApp.View
             _submitNameandFurColorButton.SetBinding(Button.CommandProperty, nameof(MyViewModel.DisplayItemCommand)); //"DisplayItemCommand");
             _dogImage.SetBinding(Image.SourceProperty, nameof(MyViewModel.DogPictureSource));
          
-
             Content = new StackLayout
             {
                 Margin = 20,
@@ -55,7 +54,6 @@ namespace ASampleApp.View
             _submitNameandFurColorButton.Clicked += _submitNameandFurColorButton_Clicked;
             _takeDogPictureButton.Clicked += _takeDogPictureButton_Clicked;
 			_saveDogPictureButton.Clicked += _saveDogPictureByFile_Clicked;
-
 		}
 
         void _submitNameandFurColorButton_Clicked(object sender, EventArgs e)
