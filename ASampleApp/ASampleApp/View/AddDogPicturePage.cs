@@ -79,6 +79,9 @@ namespace ASampleApp.View
             });
             if (_file == null)
                 return;
+            MyViewModel.DogPictureFile = _file.Path;
+            //Need to bind DogPictureSource and _file.Path
+
             await DisplayAlert("File Location", _file.Path, "OK");
             //_dogImage.Source = ImageSource.FromStream(() =>
             //{
@@ -87,7 +90,7 @@ namespace ASampleApp.View
             //    return stream;
             //});
             //or:
-            _dogImage.Source = ImageSource.FromFile(_file.Path);
+           // _dogImage.Source = ImageSource.FromFile(_file.Path);
             _saveDogPictureButton.IsEnabled = true;
             //_file.Dispose();
         }
